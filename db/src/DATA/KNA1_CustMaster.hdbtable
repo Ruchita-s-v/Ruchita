@@ -1,0 +1,6 @@
+COLUMN TABLE "My-Project.DATA::KNA1_CustMaster" (
+    KUNNR int,primary key (KUNNR),
+    NAME1 varchar(100),
+    STRAS nvarchar(200),
+    ORTO1 nvarchar(200),
+    LAND1 char(100))

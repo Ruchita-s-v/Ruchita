@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="My-Project.DATA::Join_CV" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="Join_CV"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="My-Project.DATA::VBAK_ORDER_HEADER">
+    <resourceUri>My-Project.DATA::VBAK_ORDER_HEADER</resourceUri>
+  </DataSource>
+  <DataSource id="My-Project.DATA::VBAP_ORDER_ITEM">
+    <resourceUri>My-Project.DATA::VBAP_ORDER_ITEM</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL" ignoreMultipleOutputsForFilter="false">
+    <descriptions>
+      <comment text="VBAK "/>
+    </descriptions>
+    <viewAttributes>
+      <viewAttribute id="VBELN"/>
+      <viewAttribute id="NETWR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="My-Project.DATA::VBAK_ORDER_HEADER"/>
+    <filter>&quot;NETWR&quot;&gt;1000 and &quot;VBELN&quot;&lt;100010</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="VBELN"/>
+      <viewAttribute id="NETPR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="My-Project.DATA::VBAP_ORDER_ITEM"/>
+    <filter>&quot;NETPR&quot;&gt;1000 and &quot;VBELN&quot;&lt;100005</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="fullOuter">
+    <viewAttributes>
+      <viewAttribute id="VBELN" aggregationType="sum"/>
+      <viewAttribute id="NETWR" aggregationType="sum"/>
+      <viewAttribute id="VBELN_1" aggregationType="sum"/>
+      <viewAttribute id="NETPR" aggregationType="sum"/>
+      <viewAttribute hidden="true" id="JOIN$VBELN$VBELN"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NETWR" source="NETWR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBELN$VBELN" source="VBELN"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VBELN_1" source="VBELN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NETPR" source="NETPR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBELN$VBELN" source="VBELN"/>
+    </input>
+    <joinAttribute name="JOIN$VBELN$VBELN"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="VBELN" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBELN"/>
+      <keyMapping columnObjectName="Join_1" columnName="VBELN"/>
+    </attribute>
+    <attribute id="VBELN_1" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VBELN"/>
+      <keyMapping columnObjectName="Join_1" columnName="VBELN_1"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="NETWR" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NETWR"/>
+      <measureMapping columnObjectName="Join_1" columnName="NETWR"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="NETPR" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NETPR"/>
+      <measureMapping columnObjectName="Join_1" columnName="NETPR"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="141" y="92"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-378" y="414"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-82" y="434"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-221" y="259"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="330" y="33"/>
+      <rectangleSize width="136"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="250"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>

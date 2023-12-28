@@ -1,0 +1,5 @@
+COLUMN TABLE "My-Project.DATA::MARA_Master" 
+(MATNR nvarchar(200),primary key (MATNR),
+MTART varchar(100),
+MAKTX varchar(100),
+MEINS char(100))

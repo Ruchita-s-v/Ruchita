@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="My-Project.DATA::allJOIN" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="allJOIN"/>
+<localVariables/>
+<variableMappings/>
+<dataSources/>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes/>
+    <calculatedViewAttributes/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes/>
+    <calculatedViewAttributes/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <viewAttributes/>
+    <calculatedViewAttributes/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <viewAttributes/>
+    <calculatedViewAttributes/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1">
+    <viewAttributes/>
+    <calculatedViewAttributes/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2">
+    <viewAttributes/>
+    <calculatedViewAttributes/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel>
+  <attributes/>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-214" y="320"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-14" y="320"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="174" y="320"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="374" y="320"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="false" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-88" y="214"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="268" y="214"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

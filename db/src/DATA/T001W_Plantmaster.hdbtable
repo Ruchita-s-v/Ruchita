@@ -1,0 +1,5 @@
+COLUMN TABLE "My-Project.DATA::T001W_Plantmaster" (
+    WERKS int,primary key (WERKS),
+    NAME nvarchar(200),
+    LAND1 char(100),
+    CITY varchar(100))
